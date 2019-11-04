@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import sys
-from termcolor import colored, cprint
 
 def calculate(arg):
     stack = list()
@@ -10,26 +8,16 @@ def calculate(arg):
             arg2 = stack.pop()
             result = arg1 + arg2
             stack.append(result)
-            output = colored(stack, 'magenta')
-            print(output)
         elif token == '-':
             arg1 = stack.pop()
             arg2 = stack.pop()
             result = arg2 - arg1
             stack.append(result)
-            output = colored(stack, 'green')
-            print(output)
-        elif token == '*':
-	    arg1 = stack.pop()
-            arg2 = stack.pop()
-            result = arg2 - arg1
-            stack.append(result)
-            output = colored(stack, 'green')
-            print(output)
         else:
             stack.append(int(token))
+
+    print(stack)
     if len(stack) != 1:
-        cprint(stack, 'white', 'on_red')
         raise TypeError('Malformed input ' + arg)
     return stack.pop()
 
