@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import math
 
 def calculate(arg):
     stack = list()
@@ -16,7 +17,7 @@ def calculate(arg):
         elif token == '^':
             arg1 = stack.pop()
             arg2 = stack.pop()
-            result = arg2 - arg1
+            result = math.pow(arg2, arg1)
             stack.append(result)
         else:
             stack.append(int(token))
